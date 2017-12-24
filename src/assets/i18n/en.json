@@ -1,0 +1,13 @@
+{
+  "label.product.list": "Product List",
+  "label.filter.by": "Filter By: ",
+  "label.filtered.by": "Filtered By:",
+  "label.show.image": "Show Image",
+  "label.hide.image": "Hide Image",
+  "label.product": "Product",
+  "label.code": "Code",
+  "label.available": "Available",
+  "label.price": "Price",
+  "label.rating": "5 Star Rating",
+  "label.pageTitle": "Acme Product Management"
+}

@@ -1,0 +1,55 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{'label.product.list' | translate}}
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-2">
+        {{'label.filter.by' | translate}}
+      </div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="listFilter"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>{{'label.filtered.by' | translate}} {{listFilter}}</h3>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table" *ngIf="products && products.length">
+        <thead>
+          <tr>
+            <th>
+              <button class="btn btn-primary" (click)="toggleImage()" translate>
+                {{showImage ? 'label.hide.image':'label.show.image'}}
+              </button>
+            </th>
+            <th>{{'label.product' | translate}}</th>
+            <th>{{'label.code' | translate}}</th>
+            <th>{{'label.available' | translate}}</th>
+            <th>{{'label.price' | translate}}</th>
+            <th>{{'label.rating' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of filteredProducts">
+            <td>
+              <img *ngIf="showImage"
+               [src]="product.imageUrl"
+               [title]="product.productName"
+               [style.width.px]="imageWidth"
+               [style.margin.px]="imageMargin">
+            </td>
+            <td>{{product.productName}}</td>
+            <td>{{product.productCode | lowercase | convertToSpace: '-' }}</td>
+            <td>{{product.releaseDate}}</td>
+            <td>{{product.price | currency:'USD':'symbol-narrow'}}</td>
+            <td><app-star [rating]="product.starRating"
+               (ratingClicked)="onRatingClicked($event)"></app-star></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
